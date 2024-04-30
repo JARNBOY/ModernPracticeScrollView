@@ -14,6 +14,7 @@
 		FBD1FE792BE0BEFE00F0FB3C /* ModernPracticeScrollViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE782BE0BEFE00F0FB3C /* ModernPracticeScrollViewTests.swift */; };
 		FBD1FE832BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE822BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITests.swift */; };
 		FBD1FE852BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE842BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITestsLaunchTests.swift */; };
+		FBD1FE932BE0C0B200F0FB3C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE922BE0C0B200F0FB3C /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		FBD1FE7E2BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ModernPracticeScrollViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD1FE822BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernPracticeScrollViewUITests.swift; sourceTree = "<group>"; };
 		FBD1FE842BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernPracticeScrollViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FBD1FE922BE0C0B200F0FB3C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		FBD1FE662BE0BEFC00F0FB3C /* ModernPracticeScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				FBD1FE912BE0C09600F0FB3C /* Screens */,
 				FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */,
 				FBD1FE692BE0BEFC00F0FB3C /* ContentView.swift */,
 				FBD1FE6B2BE0BEFE00F0FB3C /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				FBD1FE842BE0BEFE00F0FB3C /* ModernPracticeScrollViewUITestsLaunchTests.swift */,
 			);
 			path = ModernPracticeScrollViewUITests;
+			sourceTree = "<group>";
+		};
+		FBD1FE912BE0C09600F0FB3C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FBD1FE922BE0C0B200F0FB3C /* Home.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBD1FE6A2BE0BEFC00F0FB3C /* ContentView.swift in Sources */,
+				FBD1FE932BE0C0B200F0FB3C /* Home.swift in Sources */,
 				FBD1FE682BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
