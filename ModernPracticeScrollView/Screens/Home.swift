@@ -12,6 +12,7 @@ struct Home: View {
     @State private var searchText: String = ""
     @State private var activeTab: Tab = .all
     @Environment(\.colorScheme) private var scheme
+    @Namespace private var animation
     
     var body: some View {
         ScrollView(.vertical) {
@@ -71,6 +72,7 @@ struct Home: View {
                                     .background(
                                         Capsule()
                                             .fill(Color.primary)
+                                            .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
                                     )
                             } else {
                                 Text(tab.rawValue)
