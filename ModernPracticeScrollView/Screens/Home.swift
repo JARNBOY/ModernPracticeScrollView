@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Home: View {
+    // View Properties
+    @State private var searchText: String = ""
+    
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack(spacing: 15, content: {
@@ -15,9 +18,34 @@ struct Home: View {
             })
             .safeAreaPadding(15)
             .safeAreaInset(edge: .top, spacing: 0) {
-                
+                ExpandableNavigationBar()
             }
         }
+        .background(
+            .gray.opacity(0.15)
+        )
+    }
+    
+    // Expandable Navigation Bar
+    @ViewBuilder
+    func ExpandableNavigationBar() -> some View {
+        VStack(spacing: 10, content: {
+            // Search Bar
+            HStack(spacing: 12) {
+                Image(systemName: "magnifyingglass")
+                    .font(.title3)
+                
+                TextField("Search Conversation", text: $searchText)
+            }
+            .padding(.vertical, 10)
+            .padding(.horizontal, 15)
+            .frame(height: 45)
+            .background(
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(.background)
+            )
+        })
+        .padding(.horizontal, 15)
     }
 
     // Dummy Messages View
