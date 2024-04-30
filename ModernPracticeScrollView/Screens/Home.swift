@@ -28,9 +28,15 @@ struct Home: View {
     
     // Expandable Navigation Bar
     @ViewBuilder
-    func ExpandableNavigationBar() -> some View {
+    func ExpandableNavigationBar(_ title: String = "Messages") -> some View {
         VStack(spacing: 10, content: {
-            // Search Bar
+            /// Title
+            Text(title)
+                .font(.largeTitle.bold())
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom, 10)
+            
+            /// Search Bar
             HStack(spacing: 12) {
                 Image(systemName: "magnifyingglass")
                     .font(.title3)
@@ -45,7 +51,9 @@ struct Home: View {
                     .fill(.background)
             )
         })
+        .padding(.top, 25)
         .padding(.horizontal, 15)
+        .padding(.bottom, 10)
     }
 
     // Dummy Messages View

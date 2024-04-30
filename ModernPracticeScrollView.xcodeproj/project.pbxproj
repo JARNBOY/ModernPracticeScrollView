@@ -73,6 +73,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB270CBC2BE0CC5D005331BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FBD1FE5B2BE0BEFC00F0FB3C = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +103,7 @@
 		FBD1FE662BE0BEFC00F0FB3C /* ModernPracticeScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				FB270CBC2BE0CC5D005331BA /* Models */,
 				FBD1FE912BE0C09600F0FB3C /* Screens */,
 				FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */,
 				FBD1FE692BE0BEFC00F0FB3C /* ContentView.swift */,
