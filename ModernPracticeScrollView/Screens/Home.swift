@@ -33,6 +33,8 @@ struct Home: View {
     @ViewBuilder
     func ExpandableNavigationBar(_ title: String = "Messages") -> some View {
         GeometryReader(content: { proxy in
+            let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
+            
             VStack(spacing: 10, content: {
                 /// Title
                 Text(title)
@@ -95,6 +97,7 @@ struct Home: View {
             })
             .padding(.top, 25)
             .safeAreaPadding(.horizontal, 15)
+            .offset(y: minY < 0 ? -minY : 0)
         })
         .frame(height: 190)
         .padding(.bottom, 10)
