@@ -115,17 +115,29 @@ struct DetailMessage: View {
     // Image
     @ViewBuilder
     func PagingImageDetail() -> some View {
-        TabView {
-          ForEach(players) { player in
-              Image(player.image)
-                  .resizable()
-                  .scaledToFit()
-                  .cornerRadius(12)
-                  .padding(.top, 10)
-                  .padding(.horizontal, 15)
-          }
-        } //: TAB
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        GeometryReader(content: { proxy in
+            let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
+            let fasterTheScrollAnimationValue = 70.0
+            let scrollViewHeight = proxy.bounds(of: .scrollView(axis: .vertical))?.height ?? 0
+            let scaleProgress = minY > 0 ? 1.2 + (max(min(minY / scrollViewHeight, 1), 0) * 0.5) : 1.2
+            let progress = max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
+            
+            TabView {
+              ForEach(players) { player in
+                  Image(player.image)
+                      .resizable()
+                      .scaledToFit()
+                      .cornerRadius(12)
+                      .padding(.top, 10)
+                      .padding(.horizontal, 15)
+              }
+            } //: TAB
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+            .padding()
+            .scaleEffect(scaleProgress)
+            
+            
+        })
         .frame(height: heightImageDetail + (heightCustomBar / 1.5))
     }
     
