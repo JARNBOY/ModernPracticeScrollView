@@ -39,7 +39,7 @@ struct Home: View {
         GeometryReader(content: { proxy in
             let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
             let fasterTheScrollAnimationValue = 70.0
-            let progress = max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
+            let progress = isSearching ? 1 : max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
             
             VStack(spacing: 10, content: {
                 /// Title
@@ -116,11 +116,12 @@ struct Home: View {
             })
             .padding(.top, 25)
             .safeAreaPadding(.horizontal, 15)
-            .offset(y: minY < 0 ? -minY : 0)
+            .offset(y: minY < 0 || isSearching ? -minY : 0) // 'isSearching' condition making the navigation bar alwaya appear at the top while search bar is active
             .offset(y: -progress * 65)
         })
         .frame(height: heightEapandedBar)
         .padding(.bottom, 10)
+        .padding(.bottom, isSearching ? -65 : 0)
     }
 
     // Dummy Messages View
