@@ -40,6 +40,8 @@ struct Home: View {
                         .frame(width: 80, height: 8)
                 })
             })
+            .foregroundStyle(.gray.opacity(0.4))
+            .padding(.horizontal, 15)
         }
     }
     
