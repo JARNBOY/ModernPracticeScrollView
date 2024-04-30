@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FB270CBE2BE0CD0D005331BA /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB270CBD2BE0CD0D005331BA /* Tab.swift */; };
+		FB270CC22BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB270CC12BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift */; };
 		FBD1FE682BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */; };
 		FBD1FE6A2BE0BEFC00F0FB3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE692BE0BEFC00F0FB3C /* ContentView.swift */; };
 		FBD1FE6C2BE0BEFE00F0FB3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD1FE6B2BE0BEFE00F0FB3C /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		FB270CBD2BE0CD0D005331BA /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		FB270CC12BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollTargetBehaviour.swift; sourceTree = "<group>"; };
 		FBD1FE642BE0BEFC00F0FB3C /* ModernPracticeScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModernPracticeScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernPracticeScrollViewApp.swift; sourceTree = "<group>"; };
 		FBD1FE692BE0BEFC00F0FB3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		FB270CBF2BE0DD1B005331BA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FB270CC02BE0DD26005331BA /* Extension */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FB270CC02BE0DD26005331BA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FB270CC12BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		FBD1FE5B2BE0BEFC00F0FB3C = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +124,7 @@
 		FBD1FE662BE0BEFC00F0FB3C /* ModernPracticeScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				FB270CBF2BE0DD1B005331BA /* Utils */,
 				FB270CBC2BE0CC5D005331BA /* Models */,
 				FBD1FE912BE0C09600F0FB3C /* Screens */,
 				FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */,
@@ -283,6 +302,7 @@
 				FBD1FE932BE0C0B200F0FB3C /* Home.swift in Sources */,
 				FBD1FE682BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift in Sources */,
 				FB270CBE2BE0CD0D005331BA /* Tab.swift in Sources */,
+				FB270CC22BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

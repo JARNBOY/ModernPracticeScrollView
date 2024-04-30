@@ -28,6 +28,7 @@ struct Home: View {
             }
             .animation(.snappy(duration: 0.3, extraBounce: 0), value: isSearching)
         }
+        .scrollTargetBehavior(CustomScrollTargetBehaviour())
         .background(
             .gray.opacity(0.15)
         )
@@ -63,11 +64,14 @@ struct Home: View {
                             Image(systemName: "xmark")
                                 .font(.title3)
                         })
+                        .transition(.asymmetric(insertion: .push(from: .bottom), removal: .push(from: .top)))
                     }
                 }
+                .foregroundStyle(Color.primary)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 15 - (progress * 15))
                 .frame(height: 45)
+                .clipShape(.capsule)
                 .background(
                     RoundedRectangle(cornerRadius: 25.0 - (progress * 25))
                         .fill(.background)
