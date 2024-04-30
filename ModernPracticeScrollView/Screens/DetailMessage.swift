@@ -135,7 +135,7 @@ struct DetailMessage: View {
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .padding()
             .scaleEffect(scaleProgress)
-            
+            .offset(y: minY >= heightCustomBar ? -50 : progress)
             
         })
         .frame(height: heightImageDetail + (heightCustomBar / 1.5))
