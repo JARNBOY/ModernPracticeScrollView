@@ -14,6 +14,8 @@ struct Home: View {
     @Environment(\.colorScheme) private var scheme
     @Namespace private var animation
     
+    private let heightEapandedBar = 190.0
+    
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack(spacing: 15, content: {
@@ -34,6 +36,8 @@ struct Home: View {
     func ExpandableNavigationBar(_ title: String = "Messages") -> some View {
         GeometryReader(content: { proxy in
             let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
+            let fasterTheScrollAnimationValue = 70.0
+            let progress = max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
             
             VStack(spacing: 10, content: {
                 /// Title
@@ -50,11 +54,13 @@ struct Home: View {
                     TextField("Search Conversation", text: $searchText)
                 }
                 .padding(.vertical, 10)
-                .padding(.horizontal, 15)
+                .padding(.horizontal, 15 - (progress * 15))
                 .frame(height: 45)
                 .background(
                     RoundedRectangle(cornerRadius: 25.0)
                         .fill(.background)
+                        .padding(.top, -progress * heightEapandedBar)
+                        .padding(.horizontal, -progress * 15)
                 )
                 
                 /// Custom Segmented Picker
@@ -99,7 +105,7 @@ struct Home: View {
             .safeAreaPadding(.horizontal, 15)
             .offset(y: minY < 0 ? -minY : 0)
         })
-        .frame(height: 190)
+        .frame(height: heightEapandedBar)
         .padding(.bottom, 10)
     }
 
