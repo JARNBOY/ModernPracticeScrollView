@@ -17,26 +17,32 @@ struct DetailMessage: View {
     private let heightImageDetail = 160.0
     
     var body: some View {
-        ScrollView(.vertical) {
-            LazyVStack(spacing: 15, content: {
-                PagingImageDetail()
-                ProductsView()
-                DetailProductsView()
-                ReviewView()
-            })
-            .safeAreaInset(edge: .top, spacing: 0) {
-                CustomNavigationBar()
+        ScrollViewReader { value in
+            ScrollView(.vertical) {
+                LazyVStack(spacing: 15, content: {
+                    PagingImageDetail()
+                        .id(DetailTab.overAll.rawValue)
+                    ProductsView()
+                        .id(DetailTab.products.rawValue)
+                    DetailProductsView()
+                        .id(DetailTab.detailProduct.rawValue)
+                    ReviewView()
+                        .id(DetailTab.review.rawValue)
+                })
+                .safeAreaInset(edge: .top, spacing: 0) {
+                    CustomNavigationBar(value: value)
+                }
             }
+            .background(
+                .gray.opacity(0.15)
+            )
+            .navigationBarHidden(true)
         }
-        .background(
-            .gray.opacity(0.15)
-        )
-        .navigationBarHidden(true)
     }
     
     // Custom Navigation Bar
     @ViewBuilder
-    func CustomNavigationBar() -> some View {
+    func CustomNavigationBar(value: ScrollViewProxy) -> some View {
         GeometryReader(content: { proxy in
             let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
             let fasterTheScrollAnimationValue = 70.0
@@ -68,6 +74,7 @@ struct DetailMessage: View {
                             Button(action: {
                                 withAnimation(.snappy) {
                                     activeTab = tab
+                                    value.scrollTo(tab.rawValue)
                                 }
                             }, label: {
                                 if activeTab == tab {
