@@ -22,7 +22,7 @@ struct DetailMessage: View {
                 PagingImageDetail()
                 DummyMessagesView()
             })
-            .safeAreaPadding(heightCustomBar)
+            .safeAreaPadding(25)
             .safeAreaInset(edge: .top, spacing: 0) {
                 CustomNavigationBar()
             }
@@ -38,6 +38,8 @@ struct DetailMessage: View {
     func CustomNavigationBar() -> some View {
         GeometryReader(content: { proxy in
             let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
+            let fasterTheScrollAnimationValue = 70.0
+            let progress = max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
             
             VStack {
                 /// Navigation Bar
@@ -95,11 +97,17 @@ struct DetailMessage: View {
                     })
                 }
                 .frame(height: 50)
+                .opacity(progress)
             }
-            .background(.gray.opacity(0.8))
-            .frame(height: heightCustomBar)
+            .background(
+                RoundedRectangle(cornerRadius: 25.0 - (progress * 25))
+                    .fill(.background.opacity(progress))
+                    .padding(.top, -progress * heightCustomBar)
+                    .padding(.horizontal, -progress * 15)
+            )
             .offset(y: minY < 0 ? -minY : 0)
         })
+        .frame(height: heightCustomBar)
         .padding(.horizontal, 15)
         
     }
