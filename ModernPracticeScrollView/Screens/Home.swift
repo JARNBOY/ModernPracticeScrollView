@@ -57,22 +57,34 @@ struct Home: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 12, content: {
                     ForEach(Tab.allCases, id: \.rawValue) { tab in
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Text(tab.rawValue)
-                                .font(.callout)
-                                .foregroundStyle(activeTab == tab ? (scheme == .dark ? .black : . white) : Color.primary)
-                                .padding(.vertical, 8)
-                                .padding(.horizontal, 15)
-                                .background(
-                                    if activeTab == tab {
+                        Button(action: {
+                            withAnimation(.snappy) {
+                                activeTab = tab
+                            }
+                        }, label: {
+                            if activeTab == tab {
+                                Text(tab.rawValue)
+                                    .font(.callout)
+                                    .foregroundStyle((scheme == .dark ? .black : . white))
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 15)
+                                    .background(
                                         Capsule()
                                             .fill(Color.primary)
-                                    } else {
+                                    )
+                            } else {
+                                Text(tab.rawValue)
+                                    .font(.callout)
+                                    .foregroundStyle(Color.primary)
+                                    .padding(.vertical, 8)
+                                    .padding(.horizontal, 15)
+                                    .background(
                                         Capsule()
                                             .fill(.background)
-                                    }
-                                )
+                                    )
+                            }
                         })
+                        .buttonStyle(.plain)
                     }
                 })
             }
