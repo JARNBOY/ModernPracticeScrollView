@@ -10,6 +10,8 @@ import SwiftUI
 struct Home: View {
     // View Properties
     @State private var searchText: String = ""
+    @State private var activeTab: Tab = .all
+    @Environment(\.colorScheme) private var scheme
     
     var body: some View {
         ScrollView(.vertical) {
@@ -50,9 +52,34 @@ struct Home: View {
                 RoundedRectangle(cornerRadius: 25.0)
                     .fill(.background)
             )
+            
+            /// Custom Segmented Picker
+            ScrollView(.horizontal) {
+                HStack(spacing: 12, content: {
+                    ForEach(Tab.allCases, id: \.rawValue) { tab in
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text(tab.rawValue)
+                                .font(.callout)
+                                .foregroundStyle(activeTab == tab ? (scheme == .dark ? .black : . white) : Color.primary)
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 15)
+                                .background(
+                                    if activeTab == tab {
+                                        Capsule()
+                                            .fill(Color.primary)
+                                    } else {
+                                        Capsule()
+                                            .fill(.background)
+                                    }
+                                )
+                        })
+                    }
+                })
+            }
+            .frame(height: 50)
         })
         .padding(.top, 25)
-        .padding(.horizontal, 15)
+        .safeAreaPadding(.horizontal, 15)
         .padding(.bottom, 10)
     }
 
