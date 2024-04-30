@@ -105,6 +105,7 @@ struct Home: View {
             .padding(.top, 25)
             .safeAreaPadding(.horizontal, 15)
             .offset(y: minY < 0 ? -minY : 0)
+            .offset(y: -progress * 65)
         })
         .frame(height: heightEapandedBar)
         .padding(.bottom, 10)
