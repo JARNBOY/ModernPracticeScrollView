@@ -57,7 +57,7 @@ struct Home: View {
                 .padding(.horizontal, 15 - (progress * 15))
                 .frame(height: 45)
                 .background(
-                    RoundedRectangle(cornerRadius: 25.0)
+                    RoundedRectangle(cornerRadius: 25.0 - (progress * 25))
                         .fill(.background)
                         .padding(.top, -progress * heightEapandedBar)
                         .padding(.bottom, -progress * 65)
