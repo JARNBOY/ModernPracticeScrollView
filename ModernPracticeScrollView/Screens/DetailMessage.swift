@@ -22,7 +22,6 @@ struct DetailMessage: View {
                 PagingImageDetail()
                 DummyMessagesView()
             })
-            .safeAreaPadding(25)
             .safeAreaInset(edge: .top, spacing: 0) {
                 CustomNavigationBar()
             }
@@ -106,6 +105,7 @@ struct DetailMessage: View {
                     .padding(.horizontal, -progress * 15)
             )
             .offset(y: minY < 0 ? -minY : 0)
+            .offset(y: -progress * 10)
         })
         .frame(height: heightCustomBar)
         .padding(.horizontal, 15)
@@ -115,12 +115,6 @@ struct DetailMessage: View {
     // Image
     @ViewBuilder
     func PagingImageDetail() -> some View {
-        VStack(spacing: 10, content: {
-            Text("Image")
-            Image(systemName: "photo.artframe")
-        })
-        .frame(height: heightImageDetail)
-        
         TabView {
           ForEach(players) { player in
               Image(player.image)
@@ -132,6 +126,7 @@ struct DetailMessage: View {
           }
         } //: TAB
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        .frame(height: heightImageDetail + (heightCustomBar / 1.5))
     }
     
     // Dummy Messages View
