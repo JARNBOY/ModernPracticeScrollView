@@ -120,6 +120,18 @@ struct DetailMessage: View {
             Image(systemName: "photo.artframe")
         })
         .frame(height: heightImageDetail)
+        
+        TabView {
+          ForEach(players) { player in
+              Image(player.image)
+                  .resizable()
+                  .scaledToFit()
+                  .cornerRadius(12)
+                  .padding(.top, 10)
+                  .padding(.horizontal, 15)
+          }
+        } //: TAB
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
     
     // Dummy Messages View
