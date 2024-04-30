@@ -14,6 +14,9 @@
 		FB270CC82BE0F4B8005331BA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB270CC72BE0F4B8005331BA /* Player.swift */; };
 		FB270CCC2BE0F4EA005331BA /* player.json in Resources */ = {isa = PBXBuildFile; fileRef = FB270CCA2BE0F4EA005331BA /* player.json */; };
 		FB270CCE2BE0F51B005331BA /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB270CCD2BE0F51B005331BA /* Bundle.swift */; };
+		FBA751182BE127FB00EF4EBD /* PositionObservingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA751172BE127FB00EF4EBD /* PositionObservingView.swift */; };
+		FBA7511A2BE1284000EF4EBD /* OffsetObservingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA751192BE1284000EF4EBD /* OffsetObservingScrollView.swift */; };
+		FBA7511C2BE1296800EF4EBD /* HandleCurrentScrollOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA7511B2BE1296800EF4EBD /* HandleCurrentScrollOffset.swift */; };
 		FBD1FE682BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */; };
 		FBD1FE6A2BE0BEFC00F0FB3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1FE692BE0BEFC00F0FB3C /* ContentView.swift */; };
 		FBD1FE6C2BE0BEFE00F0FB3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD1FE6B2BE0BEFE00F0FB3C /* Assets.xcassets */; };
@@ -49,6 +52,9 @@
 		FB270CC72BE0F4B8005331BA /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FB270CCB2BE0F4EA005331BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/player.json; sourceTree = "<group>"; };
 		FB270CCD2BE0F51B005331BA /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		FBA751172BE127FB00EF4EBD /* PositionObservingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionObservingView.swift; sourceTree = "<group>"; };
+		FBA751192BE1284000EF4EBD /* OffsetObservingScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetObservingScrollView.swift; sourceTree = "<group>"; };
+		FBA7511B2BE1296800EF4EBD /* HandleCurrentScrollOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleCurrentScrollOffset.swift; sourceTree = "<group>"; };
 		FBD1FE642BE0BEFC00F0FB3C /* ModernPracticeScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModernPracticeScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBD1FE672BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernPracticeScrollViewApp.swift; sourceTree = "<group>"; };
 		FBD1FE692BE0BEFC00F0FB3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 		FB270CBF2BE0DD1B005331BA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FBA751162BE127CC00EF4EBD /* ViewExtension */,
 				FB270CC92BE0F4CA005331BA /* DataMockJSON */,
 				FB270CC02BE0DD26005331BA /* Extension */,
 				FB270CC52BE0F49B005331BA /* Constant.swift */,
@@ -109,7 +116,6 @@
 		FB270CC02BE0DD26005331BA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				FB270CC12BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift */,
 				FB270CCD2BE0F51B005331BA /* Bundle.swift */,
 			);
 			path = Extension;
@@ -121,6 +127,16 @@
 				FB270CCA2BE0F4EA005331BA /* player.json */,
 			);
 			path = DataMockJSON;
+			sourceTree = "<group>";
+		};
+		FBA751162BE127CC00EF4EBD /* ViewExtension */ = {
+			isa = PBXGroup;
+			children = (
+				FB270CC12BE0DD4E005331BA /* CustomScrollTargetBehaviour.swift */,
+				FBA751172BE127FB00EF4EBD /* PositionObservingView.swift */,
+				FBA751192BE1284000EF4EBD /* OffsetObservingScrollView.swift */,
+			);
+			path = ViewExtension;
 			sourceTree = "<group>";
 		};
 		FBD1FE5B2BE0BEFC00F0FB3C = {
@@ -187,6 +203,7 @@
 			children = (
 				FBD1FE922BE0C0B200F0FB3C /* Home.swift */,
 				FB270CC32BE0DF5F005331BA /* DetailMessage.swift */,
+				FBA7511B2BE1296800EF4EBD /* HandleCurrentScrollOffset.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -323,10 +340,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB270CC62BE0F49B005331BA /* Constant.swift in Sources */,
+				FBA751182BE127FB00EF4EBD /* PositionObservingView.swift in Sources */,
 				FB270CCE2BE0F51B005331BA /* Bundle.swift in Sources */,
 				FBD1FE6A2BE0BEFC00F0FB3C /* ContentView.swift in Sources */,
 				FBD1FE932BE0C0B200F0FB3C /* Home.swift in Sources */,
+				FBA7511A2BE1284000EF4EBD /* OffsetObservingScrollView.swift in Sources */,
 				FBD1FE682BE0BEFC00F0FB3C /* ModernPracticeScrollViewApp.swift in Sources */,
+				FBA7511C2BE1296800EF4EBD /* HandleCurrentScrollOffset.swift in Sources */,
 				FB270CC82BE0F4B8005331BA /* Player.swift in Sources */,
 				FB270CBE2BE0CD0D005331BA /* Tab.swift in Sources */,
 				FB270CC42BE0DF5F005331BA /* DetailMessage.swift in Sources */,

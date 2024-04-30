@@ -20,7 +20,9 @@ struct DetailMessage: View {
         ScrollView(.vertical) {
             LazyVStack(spacing: 15, content: {
                 PagingImageDetail()
-                DummyMessagesView()
+                ProductsView()
+                DetailProductsView()
+                ReviewView()
             })
             .safeAreaInset(edge: .top, spacing: 0) {
                 CustomNavigationBar()
@@ -115,35 +117,37 @@ struct DetailMessage: View {
     // Image
     @ViewBuilder
     func PagingImageDetail() -> some View {
-        GeometryReader(content: { proxy in
-            let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
-            let fasterTheScrollAnimationValue = 70.0
-            let scrollViewHeight = proxy.bounds(of: .scrollView(axis: .vertical))?.height ?? 0
-            let scaleProgress = minY > 0 ? 1.2 + (max(min(minY / scrollViewHeight, 1), 0) * 0.5) : 1.2
-            let progress = max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
-            
-            TabView {
-              ForEach(players) { player in
-                  Image(player.image)
-                      .resizable()
-                      .scaledToFit()
-                      .cornerRadius(12)
-                      .padding(.top, 10)
-                      .padding(.horizontal, 15)
-              }
-            } //: TAB
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-            .padding()
-            .scaleEffect(scaleProgress)
-            .offset(y: minY >= heightCustomBar ? -50 : progress)
-            
-        })
-        .frame(height: heightImageDetail + (heightCustomBar / 1.5))
+        NavigationLink(destination: HandleCurrentScrollOffset()) {
+            GeometryReader(content: { proxy in
+                let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
+                let fasterTheScrollAnimationValue = 70.0
+                let scrollViewHeight = proxy.bounds(of: .scrollView(axis: .vertical))?.height ?? 0
+                let scaleProgress = minY > 0 ? 1.2 + (max(min(minY / scrollViewHeight, 1), 0) * 0.5) : 1.2
+                let progress = max(min( -minY / fasterTheScrollAnimationValue, 1), 0)
+                
+                TabView {
+                  ForEach(players) { player in
+                      Image(player.image)
+                          .resizable()
+                          .scaledToFit()
+                          .cornerRadius(12)
+                          .padding(.top, 10)
+                          .padding(.horizontal, 15)
+                  }
+                } //: TAB
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .padding()
+                .scaleEffect(scaleProgress)
+                .offset(y: minY >= heightCustomBar ? -50 : progress)
+                
+            })
+            .frame(height: heightImageDetail + (heightCustomBar / 1.5))
+        }
     }
     
-    // Dummy Messages View
+    // Dummy Products View
     @ViewBuilder
-    func DummyMessagesView() -> some View {
+    func ProductsView() -> some View {
         ForEach(1..<20, id: \.self) { count in
             HStack(spacing: 12, content: {
                 Circle()
@@ -163,6 +167,24 @@ struct DetailMessage: View {
             .foregroundStyle(.gray.opacity(0.4))
             .padding(.horizontal, 15)
         }
+    }
+    
+    // Dummy Detail Products View
+    @ViewBuilder
+    func DetailProductsView() -> some View {
+        VStack {
+            Text("DetailProductsView")
+        }
+        .frame(height: 400)
+    }
+    
+    // Dummy Review View
+    @ViewBuilder
+    func ReviewView() -> some View {
+        VStack {
+            Text("ReviewView")
+        }
+        .frame(height: 300)
     }
 }
 
