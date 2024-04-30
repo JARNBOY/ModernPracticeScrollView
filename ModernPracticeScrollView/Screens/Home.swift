@@ -60,6 +60,7 @@ struct Home: View {
                     RoundedRectangle(cornerRadius: 25.0)
                         .fill(.background)
                         .padding(.top, -progress * heightEapandedBar)
+                        .padding(.bottom, -progress * 65)
                         .padding(.horizontal, -progress * 15)
                 )
                 
