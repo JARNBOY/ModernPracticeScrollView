@@ -12,6 +12,7 @@ struct DetailMessage: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var activeTab: DetailTab = .overAll
     @Environment(\.colorScheme) private var scheme
+    @Namespace private var animation
     private let heightCustomBar = 120.0
     private let heightImageDetail = 160.0
     
@@ -21,7 +22,7 @@ struct DetailMessage: View {
                 PagingImageDetail()
                 DummyMessagesView()
             })
-            .safeAreaPadding(15)
+            .safeAreaPadding(heightCustomBar)
             .safeAreaInset(edge: .top, spacing: 0) {
                 CustomNavigationBar()
             }
@@ -35,66 +36,72 @@ struct DetailMessage: View {
     // Custom Navigation Bar
     @ViewBuilder
     func CustomNavigationBar() -> some View {
-        VStack {
-            /// Navigation Bar
-            HStack(spacing: 10, content: {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "lessthan.square.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                })
-                
-                Spacer()
-                
-                Image(systemName: "ellipsis.circle")
-                    .resizable()
-                    .frame(width: 24, height: 24)
-            })
-            .foregroundStyle(Color.primary)
+        GeometryReader(content: { proxy in
+            let minY = proxy.frame(in: .scrollView(axis: .vertical)).minY
             
-            /// Custom Segmented Picker
-            ScrollView(.horizontal) {
-                HStack(spacing: 12, content: {
-                    ForEach(DetailTab.allCases, id: \.rawValue) { tab in
-                        Button(action: {
-                            withAnimation(.snappy) {
-                                activeTab = tab
-                            }
-                        }, label: {
-                            if activeTab == tab {
-                                Text(tab.rawValue)
-                                    .font(.callout)
-                                    .foregroundStyle((scheme == .dark ? .black : . white))
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        Capsule()
-                                            .fill(Color.primary)
-                                    )
-                            } else {
-                                Text(tab.rawValue)
-                                    .font(.callout)
-                                    .foregroundStyle(Color.primary)
-                                    .padding(.vertical, 4)
-                                    .padding(.horizontal, 8)
-                                    .background(
-                                        Capsule()
-                                            .fill(.background)
-                                    )
-                            }
-                        })
-                        .buttonStyle(.plain)
-                    }
+            VStack {
+                /// Navigation Bar
+                HStack(spacing: 10, content: {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "lessthan.square.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                    })
+                    
+                    Spacer()
+                    
+                    Image(systemName: "ellipsis.circle")
+                        .resizable()
+                        .frame(width: 24, height: 24)
                 })
+                .foregroundStyle(Color.primary)
+                
+                /// Custom Segmented Picker
+                ScrollView(.horizontal) {
+                    HStack(spacing: 12, content: {
+                        ForEach(DetailTab.allCases, id: \.rawValue) { tab in
+                            Button(action: {
+                                withAnimation(.snappy) {
+                                    activeTab = tab
+                                }
+                            }, label: {
+                                if activeTab == tab {
+                                    Text(tab.rawValue)
+                                        .font(.callout)
+                                        .foregroundStyle((scheme == .dark ? .black : . white))
+                                        .padding(.vertical, 4)
+                                        .padding(.horizontal, 8)
+                                        .background(
+                                            Capsule()
+                                                .fill(Color.primary)
+                                                .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
+                                        )
+                                } else {
+                                    Text(tab.rawValue)
+                                        .font(.callout)
+                                        .foregroundStyle(Color.primary)
+                                        .padding(.vertical, 4)
+                                        .padding(.horizontal, 8)
+                                        .background(
+                                            Capsule()
+                                                .fill(.background)
+                                        )
+                                }
+                            })
+                            .buttonStyle(.plain)
+                        }
+                    })
+                }
+                .frame(height: 50)
             }
-            .frame(height: 50)
-        }
-        
-        .frame(height: heightCustomBar)
+            .background(.gray.opacity(0.8))
+            .frame(height: heightCustomBar)
+            .offset(y: minY < 0 ? -minY : 0)
+        })
         .padding(.horizontal, 15)
-        .background(.gray.opacity(0.8))
+        
     }
     
     // Image
