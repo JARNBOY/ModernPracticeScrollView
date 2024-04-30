@@ -13,3 +13,11 @@ enum Tab: String, CaseIterable {
     case office = "Updates"
     case community = "Gaming"
 }
+
+
+enum DetailTab: String, CaseIterable {
+    case overAll = "OverAll"
+    case products = "Products"
+    case detailProduct = "DetailProduct"
+    case review = "Review"
+}
